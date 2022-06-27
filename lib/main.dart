@@ -103,14 +103,21 @@ class NewScreen extends StatelessWidget {
                       );
                     });
               },
-              child: Text('Submit'),
+              child: Text(
+                'Submit',
+                style: TextStyle(fontFamily: 'Oswald', fontSize: 20),
+              ),
             ),
             Image.network(
               'https://play-lh.googleusercontent.com/5e7z5YCt7fplN4qndpYzpJjYmuzM2WSrfs35KxnEw-Ku1sClHRWHoIDSw3a3YS5WpGcI',
               width: 200,
               height: 200,
             ),
-            Image.asset('images/ERD.jpg')
+            Image.asset(
+              'images/ERD.jpg',
+              width: 200,
+              height: 200,
+            )
           ],
         ),
         padding: EdgeInsets.all(10),
