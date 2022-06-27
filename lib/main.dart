@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:test_1/textfield.dart';
 import 'package:test_1/listview.dart';
+import 'package:test_1/expanded.dart';
 
 void main() => runApp(MyApp());
 
@@ -17,43 +18,59 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class Heading extends StatelessWidget {
-  final String text;
-  Heading({required this.text});
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: TextStyle(
-        fontSize: 24,
-        fontWeight: FontWeight.bold,
-      ),
-    );
-  }
-}
-
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Home Screen')),
-      body: Center(
-        child: ElevatedButton(
-          child: Text(
-            'Next',
-            style: TextStyle(fontSize: 24.0),
+        appBar: AppBar(title: Text('Home Screen')),
+        body: Padding(
+          padding: EdgeInsets.all(16),
+          child: Column(
+            children: [
+              ElevatedButton(
+                child: Text(
+                  'TextField',
+                  style: TextStyle(fontSize: 24.0),
+                ),
+                onPressed: () {
+                  _toTextField(context);
+                },
+              ),
+              ElevatedButton(
+                child: Text(
+                  'ListView',
+                  style: TextStyle(fontSize: 24.0),
+                ),
+                onPressed: () {
+                  _toListView(context);
+                },
+              ),
+              ElevatedButton(
+                child: Text(
+                  'Expanded',
+                  style: TextStyle(fontSize: 24.0),
+                ),
+                onPressed: () {
+                  _toExpanded(context);
+                },
+              ),
+            ],
           ),
-          onPressed: () {
-            _navigateToNextScreen(context);
-          },
-        ),
-      ),
-    );
+        ));
   }
 
-  void _navigateToNextScreen(BuildContext context) {
+  void _toTextField(BuildContext context) {
     Navigator.of(context)
         .push(MaterialPageRoute(builder: (context) => NewScreen()));
+  }
+
+  void _toListView(BuildContext context) {
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (context) => ListViewScreen()));
+  }
+
+  void _toExpanded(BuildContext context) {
+    Navigator.of(context)
+        .push(MaterialPageRoute(builder: (context) => ExpandedScreen()));
   }
 }
