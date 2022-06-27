@@ -57,44 +57,63 @@ class HomeScreen extends StatelessWidget {
 }
 
 class NewScreen extends StatelessWidget {
+  TextEditingController _controller = TextEditingController();
+  var name = '';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('New Screen')),
-      body: Center(
-        child: BiggerText(text: "Hello Flutter!"),
+      appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(
+            Icons.menu,
+            color: Colors.white,
+          ),
+          onPressed: () {},
+        ),
+        title: Text('First Screen'),
+        actions: [
+          IconButton(
+            icon: Icon(
+              Icons.search,
+              color: Colors.white,
+            ),
+            onPressed: () {},
+          ),
+        ],
       ),
-    );
-  }
-}
-
-class BiggerText extends StatefulWidget {
-  final String text;
-
-  const BiggerText({required this.text});
-
-  @override
-  _BiggerTextState createState() => _BiggerTextState();
-}
-
-class _BiggerTextState extends State<BiggerText> {
-  double _textSize = 16.0;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Text(widget.text, style: TextStyle(fontSize: _textSize)),
-        ElevatedButton(
-          child: Text("Perbesar"),
-          onPressed: () {
-            setState(() {
-              _textSize = 32.0;
-            });
-          },
-        )
-      ],
+      body: Container(
+        child: Column(
+          children: [
+            TextField(
+              controller: _controller,
+              decoration: InputDecoration(
+                hintText: 'Write your name here...',
+                labelText: 'Your Name',
+              ),
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        content: Text('Hello, ${_controller.text}'),
+                      );
+                    });
+              },
+              child: Text('Submit'),
+            )
+          ],
+        ),
+        padding: EdgeInsets.all(10),
+        margin: EdgeInsets.all(10),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () {},
+      ),
     );
   }
 }
