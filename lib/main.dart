@@ -104,6 +104,11 @@ class NewScreen extends StatelessWidget {
                     });
               },
               child: Text('Submit'),
+            ),
+            Image.network(
+              'https://play-lh.googleusercontent.com/5e7z5YCt7fplN4qndpYzpJjYmuzM2WSrfs35KxnEw-Ku1sClHRWHoIDSw3a3YS5WpGcI',
+              width: 200,
+              height: 200,
             )
           ],
         ),
